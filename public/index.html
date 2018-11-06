@@ -1,33 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
+<html>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" type="text/css" href="/vendor/normalize-8.0.1.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/layout.css">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/tweets.css">
+  <link rel="stylesheet" href="/stylesheets/nav.css">
+  <link rel="stylesheet" href="/stylesheets/form.css">
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+</head>
 
-    <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+<body>
+  <nav class="nav-top">
+    <div>
+      <div class="logo"><img src="/images/bird.png"></div>
+      <div><span class="header">Tweeter</span></div>
+      <div class="compose">
+        <i class="far fa-edit 2x"></i>
+        <span class="cont">Compose</span>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="root">
+      <div class="comp">
+        <h1>Compose Tweet</h1>
+        <form class="new-tweet" method="POST" action="/tweets">
+          <textarea name="tweet" id="tweet" required></textarea>
+          <div class="count">
+            <button class="btn" id="postTweet" type="submit">Post</button>
+            <span class="tooltip">Max char count is 140</span><span class="charCount"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <script src="/vendor/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="/javascripts/display.js"></script>
+  <script type="text/javascript" src="/javascripts/tweets.js"></script>
+</body>
 
-  <body>
-
-    <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
-      <img class="logo" src="/images/bird.png" width="80px" height="80px">
-      <span class="header">Tweeter</span>
-    </nav>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-    </main>
-
-  </body>
 </html>

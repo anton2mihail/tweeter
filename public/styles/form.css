@@ -1,0 +1,53 @@
+#tweet {
+  width: 100%;
+  height: 8rem;
+}
+.comp {
+  transition: 0.2s all ease-in 0s;
+}
+.comp > h1 {
+  color: #ffffff;
+  padding-left: 1rem;
+}
+.comp > form > textarea {
+  background-color: rgba(255, 255, 255, 1);
+  border: 2px inset #6200ee;
+}
+.comp > form > textarea:focus {
+  border: 4px solid #6200ee;
+}
+.comp {
+  border: 1px inset rgb(0, 0, 0);
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.comp > h1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.comp > hr {
+  background-color: #b00020;
+}
+
+.redColor {
+  color: #b00020;
+}
+
+.show {
+  color: #b00020;
+  font: bold;
+}
+
+.count {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+}
+
+.buttonFade {
+  background-color: #b00020;
+  opacity: 0.5;
+}
