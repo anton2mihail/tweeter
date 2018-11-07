@@ -12,55 +12,41 @@ $("document").ready(() => {
     });
   }
   loadTweets();
+  function escape(str) {
+    var div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
   function createTweetElement(tweet) {
     const today = Date.now();
-    const article = $(document.createElement("article"));
-    const header = $(document.createElement("header")).appendTo(article);
-    const divHd = $(document.createElement("div"))
-      .addClass("hd")
-      .appendTo(header);
-    const avatar = $(document.createElement("img"))
-      .attr("src", tweet.user.avatars.small)
-      .appendTo(divHd);
-    const name = $(document.createElement("h1"))
-      .addClass("name")
-      .text(tweet.user.name)
-      .appendTo(divHd);
-    const handle = $(document.createElement("span"))
-      .addClass("handle")
-      .text(tweet.user.handle)
-      .appendTo(header);
-    const tweetText = $(document.createElement("p"))
-      .text(decodeURIComponent(tweet.content.text))
-      .appendTo(article);
-    const footer = $(document.createElement("footer")).appendTo(article);
-    const daysSince = $(document.createElement("small"))
-      .text(
-        "Posted " +
+    let text = decodeURIComponent(tweet.content.text);
+    const article = $(`
+    <article>
+      <header>
+        <div class="hd">
+          <img src="${tweet.user.avatars.small}">
+          <h1 class="name">${tweet.user.name}</h1>
+        </div>
+        <span class="handle">${tweet.user.handle}</span>
+      </header>
+      <p>${escape(text)}</p>
+      <footer>
+        <small>${"Posted " +
           Math.floor((today - tweet.created_at) / 1000 / 60 / 60 / 24) +
-          " Days ago"
-      )
-      .appendTo(footer);
-    const actions = $(document.createElement("div"))
-      .addClass("actions")
-      .appendTo(footer);
-    const flag = $(document.createElement("i"))
-      .addClass("fas")
-      .addClass("fa-flag")
-      .appendTo(actions);
-    const share = $(document.createElement("i"))
-      .addClass("fas")
-      .addClass("fa-share")
-      .appendTo(actions);
-    const like = $(document.createElement("i"))
-      .addClass("fas")
-      .addClass("fa-thumbs-up")
-      .appendTo(actions);
+          " Days ago"}</small>
+        <div class="actions">
+          <i class="fas fa-flag"></i>
+          <i class="fas fa-share"></i>
+          <i class="fas fa-thumbs-up"></i>
+        </div>
+      </footer>
+    </article>
+    `);
     return article;
   }
 
   function renderTweets(tweets) {
-    tweets.forEach(el => {
+    tweets.reverse().forEach(el => {
       const one = createTweetElement(el);
       $(".root").append(one);
     });
@@ -72,8 +58,9 @@ $("document").ready(() => {
 
   $(".new-tweet").on("submit", function(e) {
     e.preventDefault();
-    const tweetText = $(this).serialize();
-    if (tweetText !== "" && tweetText.length <= 140) {
+    let tweetText = $(this).serialize();
+    console.log(tweetText);
+    if (tweetText !== "tweet=" && decodeURIComponent(tweetText).length <= 146) {
       $.ajax({
         type: "POST",
         url: "/tweets",
@@ -85,6 +72,10 @@ $("document").ready(() => {
           prependNew(data);
         }
       });
+      $(this)
+        .children("textarea")
+        .val("");
+      $(".comp").slideToggle();
     } else if (tweetText.length > 140) {
     } else {
     }
