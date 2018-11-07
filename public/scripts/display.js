@@ -5,22 +5,22 @@ $("document").ready(() => {
   tool.hide();
   $(".compose").click(() => {
     $(".comp").slideToggle();
+    $("#tweet").focus();
   });
   $("#tweet").on("input", () => {
     const max = 140;
     const counter = $(".charCount");
     const button = $("#postTweet");
-    let len = $("#tweet").val().length;
-    let cur = max - len;
+    let cur = max - $("#tweet").val().length;
     counter.text(cur);
     if (cur < 0) {
       counter.addClass("redColor");
-      button.prop("disabled", true).addClass("buttonFade");
-      tool.show().addClass("show");
+      button.prop("disabled", true);
+      tool.slideDown().addClass("redColor");
     } else {
       counter.removeClass("redColor");
-      button.prop("disabled", false).removeClass("buttonFade");
-      tool.hide().removeClass("show");
+      button.prop("disabled", false);
+      tool.hide().removeClass("redColor");
     }
   });
 });
