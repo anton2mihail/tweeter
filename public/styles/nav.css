@@ -36,7 +36,7 @@
   float: right;
   transition: 0.2s all ease-in 0s;
 }
-@media all and (max-width: 1000px) {
+@media all and (max-width: 600px) {
   i {
     font-size: 2rem;
   }
