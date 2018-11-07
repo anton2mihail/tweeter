@@ -34,10 +34,6 @@
 
 .redColor {
   color: #b00020;
-}
-
-.show {
-  color: #b00020;
   font: bold;
 }
 
@@ -47,9 +43,4 @@
   justify-content: space-between;
   align-items: center;
   color: #ffffff;
-}
-
-.buttonFade {
-  background-color: #b00020;
-  opacity: 0.5;
 }
