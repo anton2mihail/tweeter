@@ -31,7 +31,7 @@ $("document").ready(() => {
       .text(tweet.user.handle)
       .appendTo(header);
     const tweetText = $(document.createElement("p"))
-      .text(tweet.content.text)
+      .text(decodeURIComponent(tweet.content.text))
       .appendTo(article);
     const footer = $(document.createElement("footer")).appendTo(article);
     const daysSince = $(document.createElement("small"))
@@ -65,6 +65,10 @@ $("document").ready(() => {
       $(".root").append(one);
     });
   }
+  function prependNew(tweet) {
+    const one = createTweetElement(tweet);
+    $(".root").prepend(one);
+  }
 
   $(".new-tweet").on("submit", function(e) {
     e.preventDefault();
@@ -73,11 +77,13 @@ $("document").ready(() => {
       $.ajax({
         type: "POST",
         url: "/tweets",
-        data: tweetText,
+        data: { text: tweetText },
         error: err => {
           console.log(err);
         },
-        success: data => {}
+        success: data => {
+          prependNew(data);
+        }
       });
     } else if (tweetText.length > 140) {
     } else {
