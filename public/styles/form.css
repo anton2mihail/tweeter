@@ -19,7 +19,9 @@
 .comp {
   border: 1px inset rgb(0, 0, 0);
   border-radius: 15px;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-left: 25vw;
+  margin-right: 25vw;
   background-color: rgba(0, 0, 0, 0.7);
 }
 .comp > h1 {
