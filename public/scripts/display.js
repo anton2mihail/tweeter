@@ -4,7 +4,7 @@ $("document").ready(() => {
   $(".comp").hide();
   tool.hide();
   $(".compose").click(() => {
-    $(".comp").toggle();
+    $(".comp").slideToggle();
   });
   $("#tweet").on("input", () => {
     const max = 140;
