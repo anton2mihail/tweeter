@@ -38,5 +38,10 @@ Tweeter is a simple, single-page Twitter clone. Implementing an express backend,
 
 ![alt text](https://github.com/anton2mihail/tweeter/blob/master/screenshots/tweeter-tweets.png "Some tweets in the page")
 
+## Upcoming Features
+- The ability to like tweets
+- Login/Register system where only registered users can post tweets and like them
+
+
 ## Author
 Anton Lachmaniucu
