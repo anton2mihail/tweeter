@@ -15,9 +15,18 @@ $("document").ready(() => {
       counter.addClass("redColor");
       button.prop("disabled", true);
       tool.slideDown().addClass("redColor");
+    } else if (
+      $("#tweet")
+        .val()
+        .trim().length === 0
+    ) {
+      button.prop("disabled", true);
+      tool.text("You cannot submit empty tweets!");
+      tool.slideDown().addClass("redColor");
     } else {
       counter.removeClass("redColor");
       button.prop("disabled", false);
+      tool.text("Max char count is 140!");
       tool.hide().removeClass("redColor");
     }
   });
