@@ -13,7 +13,7 @@ app.use(express.static("public"));
 // Mongo client and driver setup
 const MongoClient = require("mongodb").MongoClient;
 // URI to connect to the database
-const MONGODB_URI = "mongodb://localhost:27017/tweeter";
+const MONGODB_URI = process.env.MONGODB_URI;
 
 let DataHelpers, tweetsRoutes;
 
