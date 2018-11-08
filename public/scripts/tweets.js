@@ -1,32 +1,47 @@
 $("document").ready(() => {
+  // Makes a get request to the server for all the tweets
   function loadTweets() {
     $.ajax({
       type: "GET",
       url: "/tweets",
-      error: function(err) {
+      error: err => {
         console.log(err);
       },
-      success: function(data) {
+      success: data => {
+        // Builds the HTML for each tweet then renders it to the page
         renderTweets(data);
       }
     });
   }
-  loadTweets();
+  // Clears the text property of the specified element
+  function resetText($elem, val = "") {
+    $elem.text(val);
+    return true;
+  }
+
+  // Clears the val property of the specified element
+  function resetVal($elem, val = "") {
+    $elem.val(val);
+    return true;
+  }
+
+  //Escapes a string so that it is not interpreted as html
+  // This protects against script injection
   function escape(str) {
     var div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   }
+
+  // Creates html for the passed in tweet object
   function createTweetElement(tweet) {
     const today = Date.now();
     let text = decodeURIComponent(tweet.content.text);
     const article = $(`
     <article>
       <header>
-        <div class="hd">
           <img src="${tweet.user.avatars.small}">
           <h1 class="name">${tweet.user.name}</h1>
-        </div>
         <span class="handle">${tweet.user.handle}</span>
       </header>
       <p>${escape(text)}</p>
@@ -45,39 +60,49 @@ $("document").ready(() => {
     return article;
   }
 
+  // Renders an array of tweets to the page
   function renderTweets(tweets) {
     tweets.reverse().forEach(el => {
+      // Create single tweet
       const one = createTweetElement(el);
       $(".root").append(one);
     });
   }
+
+  // Adds a single tweet to the top of the page
   function prependNew(tweet) {
     const one = createTweetElement(tweet);
     $(".root").prepend(one);
   }
 
+  // Makes a post request to the server to create a new tweet
+  function createNewTweetRecord(tweetText) {
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: { text: tweetText },
+      error: err => {
+        console.log(err);
+      },
+      success: data => {
+        prependNew(data);
+      }
+    });
+  }
+
+  // Populate the page with tweets!
+  loadTweets();
+
+  // Forces the form submit to cause an ajax request to the server
+  // Clears the text on the form textarea
   $(".new-tweet").on("submit", function(e) {
     e.preventDefault();
     let tweetText = $(this).serialize();
-    console.log(tweetText);
+    // Makes sure that the tweet is not empty and it has bounded length
     if (tweetText !== "tweet=" && decodeURIComponent(tweetText).length <= 146) {
-      $.ajax({
-        type: "POST",
-        url: "/tweets",
-        data: { text: tweetText },
-        error: err => {
-          console.log(err);
-        },
-        success: data => {
-          prependNew(data);
-        }
-      });
-      $(this)
-        .children("textarea")
-        .val("");
-      $(".comp").slideToggle();
-    } else if (tweetText.length > 140) {
-    } else {
+      createNewTweetRecord(tweetText);
+      resetVal($(this).children("textarea"), "");
+      resetText($(".charCount"), 140);
     }
   });
 });
