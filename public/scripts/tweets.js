@@ -97,12 +97,24 @@ $("document").ready(() => {
   // Clears the text on the form textarea
   $(".new-tweet").on("submit", function(e) {
     e.preventDefault();
-    let tweetText = $(this).serialize();
-    // Makes sure that the tweet is not empty and it has bounded length
-    if (tweetText !== "tweet=" && decodeURIComponent(tweetText).length <= 146) {
-      createNewTweetRecord(tweetText);
-      resetVal($(this).children("textarea"), "");
-      resetText($(".charCount"), 140);
+    if (
+      $(this)
+        .children("textarea")
+        .val()
+        .trim() !== ""
+    ) {
+      let tweetText = $(this).serialize();
+      // Makes sure that the tweet is not empty and it has bounded length
+      if (
+        tweetText !== "tweet=" &&
+        decodeURIComponent(tweetText).length <= 146
+      ) {
+        createNewTweetRecord(tweetText);
+        resetVal($(this).children("textarea"), "");
+        resetText($(".charCount"), 140);
+      }
+    } else {
+      return;
     }
   });
 });
