@@ -1,12 +1,11 @@
 "use strict";
 
 // Basic express setup:
-
-const PORT = 8080;
+require("dotenv").config();
+const PORT = process.env.port || 8080;
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
