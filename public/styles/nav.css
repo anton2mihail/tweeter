@@ -1,73 +1,51 @@
 .nav-top {
   margin: 0;
-  padding: 0;
-  width: 100vw;
+  width: calc(100vw - 10rem);
   background-color: #3700b3;
   height: 8vh;
+  z-index: 10;
+  padding: 0 6rem 0 4rem;
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
 }
 
-.nav-top > div > .compose:hover {
+.header {
+  position: relative;
+  top: -1rem;
+}
+
+.nav-top > .compose:hover {
   color: #03dac6;
   cursor: pointer;
 }
-.nav-top div .logo {
-  padding-left: 5rem;
-  float: left;
-}
-.nav-top div:nth-child(2),
-.nav-top div:nth-child(3) {
-  margin-top: 1rem;
-}
-.nav-top div:last-child {
-  padding-right: 5rem;
-}
-.nav-top > div {
-  height: 100%;
-  width: 100%;
-}
-.nav-top > div > div {
-  display: inline-block;
-  height: 100%;
-}
-.nav-top > div > div > .cont {
-  padding-bottom: 1rem;
-}
-.nav-top .compose {
-  float: right;
-  transition: 0.2s all ease-in 0s;
-}
-@media all and (max-width: 600px) {
-  i {
+
+@media all and (max-width: 800px) {
+  .nav-top > i {
     font-size: 2rem;
   }
-  .nav-top {
-    font-size: 1.7rem;
-  }
-  .nav-top > div > div > .cont {
+  .nav-top > div > .cont {
     padding-bottom: 0;
   }
-  .nav-top > div {
+  .nav-top {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .nav-top > div > div > .header,
-  .nav-top > div > div > .cont {
+  .nav-top > div > .header,
+  .nav-top > div > .cont {
     margin-right: 2rem;
   }
-  .nav-top div:nth-child(2),
-  .nav-top div:nth-child(3) {
-    margin-top: 0;
-    align-self: auto;
-  }
-  .nav-top > div > div {
+  .nav-top > div {
     display: contents;
-    height: auto;
   }
   .nav-top .compose {
     float: none;
   }
-  .nav-top > div > .compose {
-    margin-left: 1rem;
+  .header {
+    top: unset;
   }
 }
