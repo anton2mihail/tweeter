@@ -28,7 +28,7 @@ module.exports = function(DataHelpers) {
     const tweet = {
       user: user,
       content: {
-        text: req.body.text.match(/[^tweet=].*/g)[0]
+        text: req.body.text.substring(6)
       },
       created_at: Date.now()
     };

@@ -101,21 +101,19 @@ $("document").ready(() => {
       $(this)
         .children("textarea")
         .val()
-        .trim() !== ""
+        .trim() !== "" &&
+      $(this)
+        .children("textarea")
+        .val()
+        .trim().length < 140
     ) {
       let tweetText = $(this)
         .serialize()
         .replace(/(%20)(?!\w)/gm, "");
-      console.log(typeof tweetText);
       // Makes sure that the tweet is not empty and it has bounded length
-      if (
-        !/(tweet=)(?!.)/g.test(tweetText) &&
-        decodeURIComponent(tweetText).length <= 146
-      ) {
-        createNewTweetRecord(tweetText);
-        resetVal($(this).children("textarea"), "");
-        resetText($(".charCount"), 140);
-      }
+      createNewTweetRecord(tweetText);
+      resetVal($(this).children("textarea"), "");
+      resetText($(".charCount"), 140);
     } else {
       console.log("Not submitted");
       return;
