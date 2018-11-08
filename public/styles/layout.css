@@ -4,7 +4,16 @@ body {
   width: 100vw;
   font-family: "Nanum Gothic", sans-serif;
   background-image: url("../images/bg2.jpg");
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+:focus {
+  border: unset;
+  outline: none;
+}
+main {
+  margin-top: 4.4rem;
 }
 button {
   transition: 0.2s all ease 0s;
@@ -17,6 +26,41 @@ button {
   padding-top: 1rem;
   padding-left: 25vw;
   padding-right: 25vw;
+  transition: 0.4s all ease-out 0s;
+}
+.comp {
+  margin-left: 25vw;
+  margin-right: 25vw;
+}
+@media all and (max-width: 1200px) {
+  .root {
+    padding-left: 20vw;
+    padding-right: 20vw;
+  }
+  .comp {
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+}
+@media all and (max-width: 650px) {
+  .root {
+    padding-left: 15vw;
+    padding-right: 15vw;
+  }
+  .comp {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+}
+@media all and (max-width: 500px) {
+  .root {
+    padding-left: 5vw;
+    padding-right: 7vw;
+  }
+  .comp {
+    margin-left: 5vw;
+    margin-right: 7vw;
+  }
 }
 .btn {
   border-radius: 5px;
@@ -24,7 +68,7 @@ button {
   background-color: rgba(255, 255, 255, 0.85);
   color: rgb(122, 122, 122);
   padding: 10px 20px;
-  font-size: 10px;
+  font-size: 15px;
   transition: color 0.5s ease-in 0s, border-color 0.5s ease-in 0s,
     background-color 0.5s ease-in 0s;
   font-family: "Arvo", serif;
