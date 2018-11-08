@@ -15,17 +15,17 @@
 
 <body>
   <nav class="nav-top">
-    <div>
-      <div class="logo"><img src="/images/bird.png"></div>
-      <div><span class="header">Tweeter</span></div>
-      <div class="compose">
-        <i class="far fa-edit 2x"></i>
-        <span class="cont">Compose</span>
-      </div>
+    <div class="branding">
+      <img src="/images/bird.png">
+      <span class="header">Tweeter</span>
+    </div>
+    <div class="compose">
+      <i class="far fa-edit 2x"></i>
+      <span class="cont">Compose</span>
     </div>
   </nav>
   <main>
-    <div class="comp">
+    <div class="comp" style="display:none;">
       <h1>Compose Tweet</h1>
       <form class="new-tweet" method="POST" action="/tweets">
         <textarea name="tweet" id="tweet" required></textarea>
