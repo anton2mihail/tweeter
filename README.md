@@ -1,6 +1,6 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone.
+Tweeter is a simple, single-page Twitter clone. Implementing an express backend, leveraging modular routing and server code, abstracted data handling methods, and persistent data with a mongodb database. Secured against scripting attacks on client side.
 
 ## Getting Started
 
@@ -23,6 +23,20 @@ Tweeter is a simple, single-page Twitter clone.
 
 ## Dev-Dependencies
 - nodemon 1.9.2 or above
+
+## Screenshots
+
+#### Form to compose a new tweet slides down
+
+![alt text](https://github.com/anton2mihail/tweeter/blob/master/screenshots/tweeter-compose.png "Compose a new tweet")
+
+#### No tweets have been created so this is the start page
+
+![alt text](https://github.com/anton2mihail/tweeter/blob/master/screenshots/tweeter-start.png "No tweets yet")
+
+#### Here are some example tweets
+
+![alt text](https://github.com/anton2mihail/tweeter/blob/master/screenshots/tweeter-tweets.png "Some tweets in the page")
 
 ## Author
 Anton Lachmaniucu
