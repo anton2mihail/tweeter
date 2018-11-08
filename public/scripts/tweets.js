@@ -103,10 +103,13 @@ $("document").ready(() => {
         .val()
         .trim() !== ""
     ) {
-      let tweetText = $(this).serialize();
+      let tweetText = $(this)
+        .serialize()
+        .replace(/(%20)(?!\w)/gm, "");
+      console.log(typeof tweetText);
       // Makes sure that the tweet is not empty and it has bounded length
       if (
-        tweetText !== "tweet=" &&
+        !/(tweet=)(?!.)/g.test(tweetText) &&
         decodeURIComponent(tweetText).length <= 146
       ) {
         createNewTweetRecord(tweetText);
@@ -114,6 +117,7 @@ $("document").ready(() => {
         resetText($(".charCount"), 140);
       }
     } else {
+      console.log("Not submitted");
       return;
     }
   });
