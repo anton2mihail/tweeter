@@ -1,7 +1,5 @@
 $("document").ready(() => {
-  console.log("Document ready");
   const tool = $(".tooltip");
-  $(".comp").hide();
   tool.hide();
   $(".compose").click(() => {
     $(".comp").slideToggle();
