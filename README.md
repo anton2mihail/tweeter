@@ -2,6 +2,8 @@
 
 Tweeter is a simple, single-page Twitter clone. Implementing an express backend, leveraging modular routing and server code, abstracted data handling methods, and persistent data with a mongodb database. Secured against scripting attacks on client side. The frontend is designed to handle mobile interfaces gracefully, it is therefore created with responsive design in mind. The layout changes in each tweet based on the width of the screen viewing it.
 
+          Now Hosted on heroku
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
