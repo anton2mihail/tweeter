@@ -90,6 +90,9 @@ article > footer > small {
 .fas:hover {
   color: #03dac6;
 }
+.liked {
+  color: #03dac6;
+}
 article > footer > .actions > i {
   color: #ffffff;
   display: none;

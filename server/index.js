@@ -15,7 +15,7 @@ const MongoClient = require("mongodb").MongoClient;
 // URI to connect to the database
 const MONGODB_URI = process.env.MONGODB_URI;
 
-let DataHelpers, tweetsRoutes;
+let DataHelpers, tweetsRoutes, likeRoutes;
 
 // Connect to the database and keep that connect
 MongoClient.connect(
@@ -27,7 +27,9 @@ MongoClient.connect(
     }
     DataHelpers = require("./lib/data-helpers.js")(db);
     tweetsRoutes = require("./routes/tweets")(DataHelpers);
+    likeRoutes = require("./routes/like")(DataHelpers);
     app.use("/tweets", tweetsRoutes);
+    app.use("/like", likeRoutes);
   }
 );
 

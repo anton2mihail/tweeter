@@ -22,6 +22,13 @@ module.exports = function makeDataHelpers(db) {
           if (err) callback(err);
           callback(null, tweets.sort(sortNewestFirst));
         });
+    },
+
+    likeTweet: function(handle, callback) {
+      db.collection("tweets")
+        .findOneAndUpdate({ "user.handle": handle }, { $inc: { likes: 1 } })
+        .then(result => {});
+      callback(null, true);
     }
   };
 };

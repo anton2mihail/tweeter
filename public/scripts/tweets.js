@@ -1,4 +1,32 @@
 $("document").ready(() => {
+  $(document).on("click", ".fa-thumbs-up", function() {
+    console.log("Clicked", $(this).attr("liked") == "false");
+    if ($(this).attr("liked") == "false") {
+      $(this).attr("liked", "true");
+      const handle = $(this)
+        .parent()
+        .parent()
+        .parent()
+        .children("header")
+        .children(".handle")
+        .text();
+      $.ajax({
+        type: "POST",
+        url: "/like",
+        data: { handle: handle },
+        error: err => {
+          throw err;
+        },
+        success: () => {
+          console.log("Tweet Liked!");
+        }
+      });
+      $(this).text(parseInt($(this).text()) + 1);
+    } else {
+      return;
+    }
+  });
+
   // Makes a get request to the server for all the tweets
   function loadTweets() {
     $.ajax({
@@ -35,7 +63,7 @@ $("document").ready(() => {
 
   // Funtion to get the date of creation of the tweet and return it formatted properly
   function formatDate(date) {
-    const d = new Date();
+    const d = new Date(date);
     const datestring = d.toDateString() + ", at " + d.toLocaleTimeString();
     return datestring;
   }
@@ -52,11 +80,11 @@ $("document").ready(() => {
       </header>
       <p>${escape(text)}</p>
       <footer>
-        <small>${"Posted On " + formatDate()}</small>
+        <small>${"Posted On " + formatDate(tweet.created_at)}</small>
         <div class="actions">
           <i class="fas fa-flag"></i>
           <i class="fas fa-share"></i>
-          <i class="fas fa-thumbs-up"></i>
+          <i class="fas fa-thumbs-up" liked='false'>${tweet.likes}</i>
         </div>
       </footer>
     </article>
@@ -96,7 +124,6 @@ $("document").ready(() => {
 
   // Populate the page with tweets!
   loadTweets();
-
   // Forces the form submit to cause an ajax request to the server
   // Clears the text on the form textarea
   $(".new-tweet").on("submit", function(e) {

@@ -33,7 +33,8 @@ module.exports = function(DataHelpers) {
       content: {
         text: req.body.text.substring(6)
       },
-      created_at: Date.now()
+      created_at: Date.now(),
+      likes: 0
     };
 
     DataHelpers.saveTweet(tweet, err => {
