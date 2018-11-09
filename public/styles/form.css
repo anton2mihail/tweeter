@@ -1,6 +1,6 @@
 #tweet {
   width: 100%;
-  height: 8rem;
+  height: 6rem;
   background-color: rgba(255, 255, 255, 0.4);
   color: #ffffff;
 }
@@ -56,4 +56,19 @@
   -ms-flex-align: center;
   align-items: center;
   color: #ffffff;
+}
+@media all and (max-width: 800px) {
+  #tweet {
+    height: 10vh;
+  }
+  .comp {
+    border-radius: 5px;
+    opacity: 0.7;
+    background: black; /* fallback for old browsers */
+  }
+  .comp > h1 {
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+    padding-left: 0.6rem;
+  }
 }

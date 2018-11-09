@@ -114,3 +114,10 @@ button {
   border-color: #6200ee;
   background-color: rgba(212, 179, 179, 0.966);
 }
+
+@media all and (max-width: 800px) {
+  .btn {
+    padding: 5px 10px;
+    font-size: 8px;
+  }
+}
