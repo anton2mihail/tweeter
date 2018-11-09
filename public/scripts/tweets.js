@@ -33,9 +33,15 @@ $("document").ready(() => {
     return div.innerHTML;
   }
 
+  // Funtion to get the date of creation of the tweet and return it formatted properly
+  function formatDate(date) {
+    const d = new Date();
+    const datestring = d.toDateString() + ", at " + d.toLocaleTimeString();
+    return datestring;
+  }
+
   // Creates html for the passed in tweet object
   function createTweetElement(tweet) {
-    const today = Date.now();
     let text = decodeURIComponent(tweet.content.text);
     const article = $(`
     <article>
@@ -46,9 +52,7 @@ $("document").ready(() => {
       </header>
       <p>${escape(text)}</p>
       <footer>
-        <small>${"Posted " +
-          Math.floor((today - tweet.created_at) / 1000 / 60 / 60 / 24) +
-          " Days ago"}</small>
+        <small>${"Posted On " + formatDate()}</small>
         <div class="actions">
           <i class="fas fa-flag"></i>
           <i class="fas fa-share"></i>
