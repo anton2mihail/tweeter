@@ -170,6 +170,8 @@ article:hover > footer > .actions > i {
     grid-area: 1 / 2 / 2 / 3;
     -ms-flex-item-align: end;
     align-self: flex-end;
+    font-size: 0.2rem;
     margin-left: 1.4rem;
+    padding-bottom: 0.2rem;
   }
 }
