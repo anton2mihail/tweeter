@@ -16,7 +16,13 @@ main {
   margin-top: 4.4rem;
 }
 button {
+  -webkit-transition: 0.2s all ease 0s;
+  -o-transition: 0.2s all ease 0s;
   transition: 0.2s all ease 0s;
+}
+::-moz-selection {
+  background: #018786;
+  color: #ffffff;
 }
 ::selection {
   background: #018786;
@@ -26,6 +32,8 @@ button {
   padding-top: 1rem;
   padding-left: 25vw;
   padding-right: 25vw;
+  -webkit-transition: 0.4s all ease-out 0s;
+  -o-transition: 0.4s all ease-out 0s;
   transition: 0.4s all ease-out 0s;
 }
 .comp {
@@ -41,6 +49,15 @@ button {
       #414345,
       #232526
     ); /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(#414345),
+      to(#232526)
+    );
+    background: -webkit-linear-gradient(left, #414345, #232526);
+    background: -o-linear-gradient(left, #414345, #232526);
     background: linear-gradient(
       to right,
       #414345,
@@ -83,6 +100,10 @@ button {
   color: rgb(122, 122, 122);
   padding: 10px 20px;
   font-size: 15px;
+  -webkit-transition: color 0.5s ease-in 0s, border-color 0.5s ease-in 0s,
+    background-color 0.5s ease-in 0s;
+  -o-transition: color 0.5s ease-in 0s, border-color 0.5s ease-in 0s,
+    background-color 0.5s ease-in 0s;
   transition: color 0.5s ease-in 0s, border-color 0.5s ease-in 0s,
     background-color 0.5s ease-in 0s;
   font-family: "Arvo", serif;
