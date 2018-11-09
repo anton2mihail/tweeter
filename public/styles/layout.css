@@ -86,11 +86,11 @@ button {
 @media all and (max-width: 500px) {
   .root {
     padding-left: 5vw;
-    padding-right: 7vw;
+    padding-right: 5vw;
   }
   .comp {
     margin-left: 5vw;
-    margin-right: 7vw;
+    margin-right: 5vw;
   }
 }
 .btn {
