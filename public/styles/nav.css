@@ -1,10 +1,9 @@
 .nav-top {
   margin: 0;
-  width: calc(100vw - 10rem);
+  width: calc(100vw);
   background-color: #3700b3;
   height: 8vh;
   z-index: 10;
-  padding: 0 6rem 0 4rem;
   position: fixed;
   overflow: hidden;
   display: -webkit-box;
@@ -17,6 +16,10 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
   top: 0;
+}
+
+.nav-top:nth-child(2) {
+  width: 10vw;
 }
 
 .header {
@@ -47,9 +50,8 @@
     -ms-flex-pack: center;
     justify-content: center;
   }
-  .nav-top > div > .header,
-  .nav-top > div > .cont {
-    margin-right: 2rem;
+  .nav-top > div > .header {
+    margin: 0;
   }
   .nav-top > div {
     display: contents;
