@@ -33,6 +33,20 @@ button {
   margin-right: 25vw;
 }
 @media all and (max-width: 1200px) {
+  body {
+    background-image: none;
+    background: #606c88; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #606c88,
+      #3f4c6b
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #606c88,
+      #3f4c6b
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
   .root {
     padding-left: 20vw;
     padding-right: 20vw;
