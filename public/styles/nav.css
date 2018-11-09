@@ -18,8 +18,15 @@
   top: 0;
 }
 
+.spacer:before {
+  content: "";
+}
+
 .spacer {
   width: 10vw;
+}
+.spacer:after {
+  content: "";
 }
 
 .header {
